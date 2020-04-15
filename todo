@@ -1,0 +1,3 @@
+use command-T guts
+persist `find …`
+figure out how to test
