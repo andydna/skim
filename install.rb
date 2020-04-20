@@ -6,8 +6,6 @@ puts "what's your preferred pdf reader(default: zathura)?"
 pdf_reader = gets.strip
 pdf_reader = 'zathura' if pdf_reader.empty?
 
-warn "but you really should try zathura" unless pdf_reader == 'zathura'
-
 src = File.open('lib/skim.rb', 'r'){|f|f.read}
 
 src = src.sub('__BOOK_SHELF__', book_shelf)

@@ -14,7 +14,7 @@ class Skim
     end
 
     def find(words)
-      re = /#{words.split.permutation.map{|a|a.join('.*')}.join('|')}/
+      re = /#{words.split.permutation.map{|a|a.join('.*')}.join('|')}/i
       books.select do |book|
         book.match(re)
       end.first
@@ -24,6 +24,6 @@ end
 
 if __FILE__ == $0
   words = ARGV.join(' ')
-  #puts "found: #{Skim.find words}"
-  exec("__PDF_READER__ #{Skim.find words} &")
+  found = Skim.find(words).shellescape
+  exec("__PDF_READER__ #{found} &")
 end
